@@ -2,7 +2,7 @@ name: "Protocol Buffer Go Stubs Generation"
 on:
   push:
     tags:
-      - v**
+      - 'golang/**'
 jobs:
   protoc:
     name: "Generate"
