@@ -8,8 +8,7 @@ EMAIL=$4
 git config user.name "$USER_NAME"
 git config user.email "$EMAIL"
 git checkout main
-git fetch
-git rebase origin/main
+git pull origin main --rebase
 
 sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
@@ -23,7 +22,7 @@ go mod init \
 go mod tidy
 cd ../../
 git add . && git commit -am "proto update" || true
-git push -f origin HEAD:main
+git push -f origin main
 git tag -fa golang/${SERVICE_NAME}/${RELEASE_VERSION} \
   -m "golang/${SERVICE_NAME}/${RELEASE_VERSION}" 
 git push origin refs/tags/golang/${SERVICE_NAME}/${RELEASE_VERSION}
