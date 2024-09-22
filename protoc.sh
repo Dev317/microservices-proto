@@ -7,7 +7,9 @@ EMAIL=$4
 
 git config user.name "$USER_NAME"
 git config user.email "$EMAIL"
-git pull && git checkout main
+git checkout main
+git fetch
+git rebase origin/main
 
 sudo apt-get install -y protobuf-compiler golang-goprotobuf-dev
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
